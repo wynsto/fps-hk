@@ -3,7 +3,10 @@ var Payload = require("./payload");
 var CRC = require("./crc");
 
 var _uid = "hk.com.hkicl";
+var _bankCode = "";
 var _merchantID = "";
+var _merchantMobile = "";
+var _merchantEmail = "";
 var _transactionAmount = "";
 var _billNumber = "";
 var _mobileNumber = "";
@@ -49,8 +52,12 @@ function getMerchantCity() {
 
 function getMerchantAccountInfo() {
     var uid = new Payload(ID.MERCHANT_ACC_INFO_GLOBALLY_UID, _uid).toString();
+    var bankCode = new Payload(ID.MERCHANT_ACC_INFO_BANK_CODE, _bankCode).toString();
     var merc = new Payload(ID.MERCHANT_ACC_INFO_MERCHANT_ID, _merchantID).toString();
-    return new Payload(ID.MERCHANT_ACC_INFO, uid + merc).toString();
+    var mercNum = new Payload(ID.MERCHANT_ACC_INFO_MOBILE, _merchantMobile).toString();
+    var mercEmail = new Payload(ID.MERCHANT_ACC_INFO_EMAIL, _merchantEmail).toString();
+
+    return new Payload(ID.MERCHANT_ACC_INFO, uid + bankCode + merc + mercNum + mercEmail).toString();
 }
 
 function getTransactionAmount() {
@@ -86,6 +93,18 @@ function getCheckSUM(string) {
 
 function setMerchantID(value) {
     _merchantID = value;
+}
+
+function setBankCode(value) {
+    _bankCode = value;
+}
+
+function setMerchantMobileNumber(value) {
+    _merchantMobile = value;
+}
+
+function setMerchantEmail(value) {
+    _merchantEmail = value;
 }
 
 function setTransactionAmount(value) {
@@ -146,7 +165,10 @@ module.exports = {
     setAdditionalCustomerDataRequest,
     setBillNumber,
     setCustomerLabel,
+    setBankCode,
     setMerchantID,
+    setMerchantMobileNumber,
+    setMerchantEmail,
     setMobileNumber,
     setPurposeOfTransaction,
     setLoyaltyNumber,

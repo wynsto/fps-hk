@@ -16,9 +16,21 @@ module.exports = Object.freeze({
     */
     MERCHANT_ACC_INFO_GLOBALLY_UID: '00',
     /*
+    * 26 01 Bank Code
+    */
+    MERCHANT_ACC_INFO_BANK_CODE: '01',
+    /*
     * 26 02 Merchant ID
     */
     MERCHANT_ACC_INFO_MERCHANT_ID: '02',
+    /*
+    * 26 03 MOBILE RFU for EMVCo
+    */
+    MERCHANT_ACC_INFO_MOBILE: '03',
+     /*
+    * 26 04 RFU for EMVCo
+    */
+    MERCHANT_ACC_INFO_EMAIL: '04',
     /* 
     * 52 Point of Initiation Method
     */

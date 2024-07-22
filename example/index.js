@@ -1,10 +1,13 @@
-var fps = require('node-fps-hk')
+var fps = require('../index')
 var qrimage = require('qr-image');
 var http = require('http');
 
 http.createServer(function (req, res) {
     if (req.url == '/') {
-        fps.setMerchantID("0000001");
+        // fps.setMerchantID("0000001"); Proxy ID only works on mobile phone number or email address
+        fps.setMerchantMobileNumber("+852-12345678"); 
+        fps.setBankCode("004");
+        // fps.setMerchantEmail("test@gmail.com");
         fps.setBillNumber("0002");
         fps.setStoreLabel("0003");
         fps.setLoyaltyNumber("0004");
