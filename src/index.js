@@ -1,6 +1,6 @@
-const ID = require("./id");
-var Payload = require("./payload");
-var CRC = require("./crc");
+import ID from "./id.js";
+import Payload from "./payload.js";
+import CRC from "./crc.js";
 
 var _uid = "hk.com.hkicl";
 var _bankCode = "";
@@ -161,7 +161,7 @@ function generate() {
     return result;
 }
 
-module.exports = {
+export default {
     setAdditionalCustomerDataRequest,
     setBillNumber,
     setCustomerLabel,

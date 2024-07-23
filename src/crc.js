@@ -27,6 +27,6 @@ function generateCRC16Table() {
     return table;
 }
 
-module.exports = {
+export default {
     computeCheckSum: computeCheckSum
 };

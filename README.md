@@ -38,8 +38,8 @@ fps.setPurposeOfTransaction("0007");
 fps.setMobileNumber("12345678");
 fps.setTransactionAmount("5000");
 fps.setReferenceLabel("ABCD");
-var string = fps.generate();
-var code = qrimage.image(string, { type: 'png' });
+const string = fps.generate();
+const code = qrimage.image(string, { type: 'png' });
 res.setHeader('Content-type', 'image/png');  //sent qr image to client side
 code.pipe(res);
 
