@@ -1,10 +1,12 @@
 
-## node-hk-fps
+## hk-fps
+
+This project is forked from [node-hk-fps](https://github.com/ryanchanplc/node-fps-hk)
+
 A Nodejs module that help to generate QR code content string of the Hong Kong Faster Payment System. Please refer the [blog](https://medium.com/@ryanchanplc/understanding-the-qr-code-used-in-hong-kong-faster-payment-system-6cc1671405d2)
 
 
-**NOTE: this package only support FPS ID (MerchantID), it doesnt support mobile number / email as recipient identifier. The mobile number is just a field in Additional Data in CommonQR Code Specification.**
-
+added support for mobile number and email address. 
 
 
 ## Installation
@@ -22,9 +24,10 @@ var  fps = require('fps-hk')
 
 ```javascript
 //import module
-// fps.setMerchantID("0000001"); Proxy ID only works on mobile phone number or email address
+// fps.setMerchantID("0000001"); FPS ID 
+// only works on mobile phone number or email address
 fps.setMerchantMobileNumber("+852-12345678"); 
-fps.setBankCode("004");
+fps.setBankCode("004"); // only works on mobile phone number or email address
 // fps.setMerchantEmail("test@gmail.com");
 fps.setBillNumber("0002");
 fps.setStoreLabel("0003");
