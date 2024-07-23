@@ -11,11 +11,11 @@ A Nodejs module that help to generate QR code content string of the Hong Kong Fa
 
 Install with npm
 ```  
-npm install node-fps-hk
+npm install fps-hk
 ```
 and in your code
 ```javascript
-var  fps = require('node-fps-hk')
+var  fps = require('fps-hk')
 ```
 
 ## Usage
