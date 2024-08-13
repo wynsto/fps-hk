@@ -8,6 +8,7 @@ var _merchantID = "";
 var _merchantMobile = "";
 var _merchantEmail = "";
 var _transactionAmount = "";
+let _transactionCurrency = "344" // CNY: 156, HKD: 344
 var _billNumber = "";
 var _mobileNumber = "";
 var _storeLabel = "";
@@ -35,7 +36,7 @@ function getMerhantCategoryCode() {
 }
 
 function getTransactionCurrency() {
-    return new Payload(ID.TRANSACTION_CURRENCY, "344").toString();
+    return new Payload(ID.TRANSACTION_CURRENCY, _transactionCurrency).toString();
 }
 
 function getCountryCode() {
@@ -110,6 +111,11 @@ function setMerchantEmail(value) {
 function setTransactionAmount(value) {
     _transactionAmount = parseFloat(value).toFixed(2).toString();
 }
+
+function setTransactionCurrency(value) {
+    _transactionCurrency = value
+}
+
 function setBillNumber(value) {
     _billNumber = value;
 }
@@ -176,5 +182,6 @@ export default {
     setStoreLabel,
     setTerminalLabel,
     setTransactionAmount,
+    setTransactionCurrency,
     generate
 }
