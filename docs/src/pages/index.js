@@ -237,7 +237,7 @@ const IndexPage = () => {
         (proxyType === 'Number' || proxyType === 'Email') &&
         <div>
           
-          <p>如果採用等級的默認銀行收款請留空 </p>
+          <p>如果採用登記的默認銀行收款請留空 </p>
           <p>Leave bank code blank if you want to receive money through default registered bank</p>
           <input placeholder="銀行編號 Bank Code" value={bankCode} onChange={onBankCodeChange} />
         </div>
