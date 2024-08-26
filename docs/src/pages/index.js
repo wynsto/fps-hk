@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from "react"
 
-import fps from '../../../src/index'
+import fps from 'fps-hk'
 
 import QRCodeStyling from "qr-code-styling";
  
