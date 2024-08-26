@@ -68,11 +68,11 @@ jobs:
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
-        run: npm run build
+        run: cd docs && npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./docs/public
 
   # Deployment job
   deploy:
