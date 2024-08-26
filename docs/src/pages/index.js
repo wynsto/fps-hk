@@ -76,8 +76,8 @@ const descriptionStyle = {
 }
 
 const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
+  text: "Github",
+  url: "https://github.com/wynsto/fps-hk",
   color: "#8954A8",
 }
 
@@ -99,10 +99,10 @@ const badgeStyle = {
 
 const links = [
   {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
+    text: "Npm",
+    url: "https://www.npmjs.com/package/fps-hk",
     description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
+      "fps-hk Npm",
     color: "#E95800",
   }
 ]
