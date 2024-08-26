@@ -68,7 +68,7 @@ jobs:
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
-        run: cd docs && npm run build --legacy-peer-deps
+        run: cd docs && npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
