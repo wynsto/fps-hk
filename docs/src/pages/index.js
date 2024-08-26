@@ -216,6 +216,12 @@ const IndexPage = () => {
       <div>
         金額 Amount: <input placeholder="Amount" value={amount} onChange={onAmountChange} />
       </div>
+      <div>
+        <select onChange={onCurrencyChange} value={currency}>
+          <option value="344">HKD</option>
+          <option value="156">CNY</option>
+        </select>
+      </div>
      
       <select onChange={onProxyIdTypeChange} value={proxyType}>
         <option value="Number">手機號碼 Mobile Number</option>
@@ -242,16 +248,6 @@ const IndexPage = () => {
           <input placeholder="銀行編號 Bank Code" value={bankCode} onChange={onBankCodeChange} />
         </div>
       }
-
-
-      <div>
-      <select onChange={onCurrencyChange} value={currency}>
-        <option value="344">HKD</option>
-        <option value="156">CNY</option>
-      </select>
-
-      </div>
-
 
       <select onChange={onExtensionChange} value={fileExt}>
         <option value="png">PNG</option>
