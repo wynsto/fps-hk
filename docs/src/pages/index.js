@@ -207,7 +207,7 @@ const IndexPage = () => {
   
   return (
     <main style={pageStyles}>
-      <h1 style={headingStyles}>
+      <h1 className="text-2xl font-bold m-2">
         轉數快（FPS）二維碼在線生成器Faster Payment System(FPS) QR Code Generator 
       </h1>
       <p style={paragraphStyles}>
@@ -231,12 +231,12 @@ const IndexPage = () => {
       <div>
       {
         proxyType === 'Number' &&
-        <select onChange={onCountryCodeChange} value={countryCode}>
+        <select className="inline-block" onChange={onCountryCodeChange} value={countryCode}>
           <option value="+852">+852</option>
           <option value="+86">+86</option>
         </select>
       }
-        <input placeholder={"Please input " + proxyType} value={proxyId} onChange={onProxyIdChange} />
+        <input className="inline-block" placeholder={"Please input " + proxyType} value={proxyId} onChange={onProxyIdChange} />
       </div>
 
       {
