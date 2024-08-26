@@ -5,7 +5,7 @@ module.exports = {
   pathPrefix: "/fps-hk",
   siteMetadata: {
     title: `Faster Payment System QR Code Generator`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://wynsto.github.io/fps-hk/`
   },
   plugins: [{ 
     resolve: "gatsby-plugin-google-gtag",

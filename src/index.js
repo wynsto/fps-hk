@@ -1,3 +1,5 @@
+import { Buffer } from "buffer";
+
 import ID from "./id.js";
 import Payload from "./payload.js";
 import CRC from "./crc.js";
@@ -167,6 +169,25 @@ function generate() {
     return result;
 }
 
+function reset() {
+    _uid = "hk.com.hkicl";
+    _bankCode = "";
+    _merchantID = "";
+    _merchantMobile = "";
+    _merchantEmail = "";
+    _transactionAmount = "";
+    _transactionCurrency = "344" // CNY: 156, HKD: 344
+    _billNumber = "";
+    _mobileNumber = "";
+    _storeLabel = "";
+    _loyaltyNumber = "";
+    _referenceLabel = "";
+    _customerLabel = "";
+    _terminalLabel = "";
+    _purposeOfTransaction = "";
+    _additionalCustomerDataRequest = "";
+}
+
 export default {
     setAdditionalCustomerDataRequest,
     setBillNumber,
@@ -183,5 +204,6 @@ export default {
     setTerminalLabel,
     setTransactionAmount,
     setTransactionCurrency,
-    generate
+    generate,
+    reset
 }

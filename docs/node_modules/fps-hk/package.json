@@ -1,0 +1,37 @@
+{
+  "name": "fps-hk",
+  "version": "1.0.7",
+  "description": "A tool to generate the qrcode content string used by Faster Payment System in Hong Kong. support mobile number/email. Based on node-fps-hk",
+  "type":"module",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wynsto/fps-hk.git"
+  },
+  "files": [
+    "/src",
+    "./index.js"
+  ],
+  "author": "Wynston",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^6.2.2",
+    "rewire": "^4.0.1",
+    "should": "^13.2.3"
+  },
+  "keywords": [
+    "fps",
+    "hk",
+    "payment",
+    "faster payment system",
+    "icl",
+    "hkma",
+    "hong kong"
+  ]
+}

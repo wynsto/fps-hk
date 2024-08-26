@@ -1,4 +1,24 @@
-import * as React from "react"
+import React, {useEffect, useState, useRef} from "react"
+
+import fps from '../../../src/index'
+
+import QRCodeStyling from "qr-code-styling";
+ 
+const qrCode = new QRCodeStyling({
+  width: 300,
+  height: 300,
+  // image:
+  //   "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+  // dotsOptions: {
+  //   color: "#4267b2",
+  //   type: "rounded"
+  // },
+  // imageOptions: {
+  //   crossOrigin: "anonymous",
+  //   margin: 20
+  // }
+});
+
 
 const pageStyles = {
   color: "#232129",
@@ -84,57 +104,163 @@ const links = [
     description:
       "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
     color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
+  }
 ]
 
 const IndexPage = () => {
+  const [url, setUrl] = useState("https://wynsto.github.io/fps-hk/");
+  const [fileExt, setFileExt] = useState("png");
+  const [currency, setCurrency] = useState("344");
+  const [amount, setAmount] = useState(0);
+  const [countryCode, setCountryCode] = useState('+852');
+  const [proxyId, setProxyId] = useState('');
+  const [bankCode, setBankCode] = useState('');
+
+
+  const [proxyType, setProxyType] = useState('Number');
+  const ref = useRef(null);
+
+  useEffect(() => {
+    qrCode.append(ref.current);
+  }, []);
+
+  useEffect(() => {
+    fps.reset()
+    switch (proxyType) {
+      case 'Number':
+        const mobileNumber = `${countryCode}-${proxyId}`
+        console.log(mobileNumber)
+        fps.setMerchantMobileNumber(mobileNumber);
+        break;
+      case 'Email':
+        fps.setMerchantEmail(proxyId);
+        break;
+      case 'FPSID':
+        fps.setMerchantID(proxyId);
+        break;
+    }
+    // fps.setMerchantID("0000001"); // FPS ID
+    // fps.setMerchantMobileNumber("+852-12345678"); 
+    // fps.setBankCode("004"); // only works when using mobile number and email for addressing, for default bank leave this field black
+    // // fps.setMerchantEmail("test@gmail.com");
+    // // fps.setBillNumber("0002");
+    // // fps.setStoreLabel("0003");
+    // // fps.setLoyaltyNumber("0004");
+    // // fps.setCustomerLabel("0005");
+    // // fps.setTerminalLabel("0006");
+    // // fps.setPurposeOfTransaction("0007");
+    // // fps.setMobileNumber("12345678");
+    if (amount) {
+      fps.setTransactionAmount(amount);
+    }
+    // fps.setTransactionCurrency(currency);
+    // fps.setReferenceLabel("ABCD");
+    const string = fps.generate();
+    console.log(string);
+    qrCode.update({
+      data: string
+    });
+  }, [url, amount, countryCode, proxyId, proxyType, currency]);
+
+  const onUrlChange = (event) => {
+    event.preventDefault();
+    setUrl(event.target.value);
+  };
+
+  const onProxyIdChange = (event) => {
+    event.preventDefault();
+    setProxyId(event.target.value);
+  };
+
+  const onProxyIdTypeChange= (event) => {
+    setProxyType(event.target.value);
+  };
+
+  const onAmountChange= (event) => {
+    event.preventDefault();
+    setAmount(event.target.value);
+  };
+
+  const onCountryCodeChange= (event) => {
+    setCountryCode(event.target.value);
+  };
+
+  const onBankCodeChange= (event) => {
+    setBankCode(event.target.value);
+  };
+
+
+  const onCurrencyChange = (event) => {
+    setCurrency(event.target.value);
+  };
+
+
+  const onExtensionChange = (event) => {
+    setFileExt(event.target.value);
+  };
+
+  const onDownloadClick = () => {
+    qrCode.download({
+      extension: fileExt
+    });
+  };
+  
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
+        轉數快（FPS）二維碼在線生成器Faster Payment System(FPS) QR Code Generator 
       </h1>
       <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
+        
       </p>
+      <div>
+        金額 Amount: <input placeholder="Amount" value={amount} onChange={onAmountChange} />
+      </div>
+     
+      <select onChange={onProxyIdTypeChange} value={proxyType}>
+        <option value="Number">手機號碼 Mobile Number</option>
+        <option value="Email">郵箱 Email</option>
+        <option value="FPSID">轉數快號碼 FPS ID</option>
+      </select>
+      <div>
+      {
+        proxyType === 'Number' &&
+        <select onChange={onCountryCodeChange} value={countryCode}>
+          <option value="+852">+852</option>
+          <option value="+86">+86</option>
+        </select>
+      }
+        <input placeholder={"Please input " + proxyType} value={proxyId} onChange={onProxyIdChange} />
+      </div>
+
+      {
+        (proxyType === 'Number' || proxyType === 'Email') &&
+        <div>
+          
+          <p>如果採用等級的默認銀行收款請留空 </p>
+          <p>Leave bank code blank if you want to receive money through default registered bank</p>
+          <input placeholder="銀行編號 Bank Code" value={bankCode} onChange={onBankCodeChange} />
+        </div>
+      }
+
+
+      <div>
+      <select onChange={onCurrencyChange} value={currency}>
+        <option value="344">HKD</option>
+        <option value="156">CNY</option>
+      </select>
+
+      </div>
+
+
+      <select onChange={onExtensionChange} value={fileExt}>
+        <option value="png">PNG</option>
+        <option value="jpeg">JPEG</option>
+        <option value="webp">WEBP</option>
+      </select>
+      <button onClick={onDownloadClick}>Download</button>
+
+      <div ref={ref} />
       <ul style={listStyles}>
         <li style={docLinkStyle}>
           <a
