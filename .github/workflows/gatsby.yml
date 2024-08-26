@@ -64,11 +64,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
       - name: Install dependencies
-        run: cd docs && npm install
+        run: cd docs && npm install --legacy-peer-deps
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
-        run: cd docs && npm run build
+        run: cd docs && npm run build --legacy-peer-deps
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
