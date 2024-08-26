@@ -299,4 +299,4 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>
+export const Head = () => <title>轉數快二維碼在線生成器 Faster Payment System(FPS) QR Code Generator </title>
