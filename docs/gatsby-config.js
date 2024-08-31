@@ -10,7 +10,7 @@ module.exports = {
   plugins: [{ 
     resolve: "gatsby-plugin-google-gtag",
     options: {
-      "trackingIds": ["G-6TLC8058Y5"]
+      "trackingIds": ["G-6PL8YL3GV4"]
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
