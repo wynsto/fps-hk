@@ -64,6 +64,10 @@ visit `http://localhost:8080`
 
 ## Useful Links
 
+[Faster Payment System qr code online generation](https://wynsto.github.io/fps-hk/)
+
+https://wynsto.github.io/fps-hk/
+
 Please find the specification of the QR Code used in FPS at:
 [https://fps.hkicl.com.hk/eng/fps/merchants/qr_code.php](https://fps.hkicl.com.hk/eng/fps/merchants/qr_code.php)
 
