@@ -126,6 +126,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     fps.reset()
+    fps.setTransactionCurrency(currency)
     switch (proxyType) {
       case 'Number':
         const mobileNumber = `${countryCode}-${proxyId}`
