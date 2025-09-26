@@ -33,7 +33,7 @@
     "qr-code-styling": "^1.9.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "ajv@8":"^8.17.1"
+    "ajv":"^8.17.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
