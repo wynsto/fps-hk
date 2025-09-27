@@ -1,9 +1,9 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
-  // flags: {
-  //   DEV_SSR: true,
-  // },
+  flags: {
+    DEV_SSR: false,
+  },
   siteMetadata: {
     title: `docs`,
     siteUrl: `https://wynsto.github.io/fps-hk`
