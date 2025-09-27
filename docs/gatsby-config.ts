@@ -4,6 +4,7 @@ const config: GatsbyConfig = {
   flags: {
     DEV_SSR: false,
   },
+  pathPrefix: `/fps-hk`, 
   siteMetadata: {
     title: `docs`,
     siteUrl: `https://wynsto.github.io/fps-hk/`
