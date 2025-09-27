@@ -91,15 +91,13 @@ const IndexPage = () => {
     
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && ref.current) {
-      // Only create once
-      if (!qrCodeRef.current) {
-        qrCodeRef.current = new QRCodeStyling({
-          width: 300,
-          height: 300
-        });
-        qrCodeRef.current.append(ref.current);
-      }
+    // Only create once
+    if (!qrCodeRef.current) {
+      qrCodeRef.current = new QRCodeStyling({
+        width: 300,
+        height: 300
+      });
+      qrCodeRef.current.append(ref.current);
     }
   }, []);
 
