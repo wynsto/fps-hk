@@ -8,6 +8,10 @@ exports.onCreateWebpackConfig = ({
     actions.setWebpackConfig({
       module: {
         rules: [
+          // {
+          //   test: /qr-code-styling/,
+          //   use: loaders.null(),
+          // },
           {
             test: /\.less$/,
             use: [

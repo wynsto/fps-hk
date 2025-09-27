@@ -2,23 +2,7 @@ import React, {useEffect, useState, useRef} from "react"
 
 import fps from 'fps-hk'
 
-import QRCodeStyling from "qr-code-styling";
- 
-const qrCode = new QRCodeStyling({
-  width: 300,
-  height: 300,
-  // image:
-  //   "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
-  // dotsOptions: {
-  //   color: "#4267b2",
-  //   type: "rounded"
-  // },
-  // imageOptions: {
-  //   crossOrigin: "anonymous",
-  //   margin: 20
-  // }
-});
-
+import QRCodeStyling  from "qr-code-styling";
 
 const pageStyles = {
   color: "#232129",
@@ -81,22 +65,6 @@ const docLink = {
   color: "#8954A8",
 }
 
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
 const links = [
   {
     text: "Npm",
@@ -115,13 +83,24 @@ const IndexPage = () => {
   const [countryCode, setCountryCode] = useState('+852');
   const [proxyId, setProxyId] = useState('');
   const [bankCode, setBankCode] = useState('');
-
-
   const [proxyType, setProxyType] = useState('Number');
-  const ref = useRef(null);
+
+  const ref = useRef<HTMLDivElement>(null);
+  const qrCodeRef = useRef<any>(null);
+
+    
 
   useEffect(() => {
-    qrCode.append(ref.current);
+    if (typeof window !== 'undefined' && ref.current) {
+      // Only create once
+      if (!qrCodeRef.current) {
+        qrCodeRef.current = new QRCodeStyling({
+          width: 300,
+          height: 300
+        });
+        qrCodeRef.current.append(ref.current);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -158,52 +137,55 @@ const IndexPage = () => {
     // fps.setReferenceLabel("ABCD");
     const string = fps.generate();
     console.log(string);
-    qrCode.update({
-      data: string
-    });
+    if (qrCodeRef.current) {
+      qrCodeRef.current.update({
+        data: string
+      });
+    }
   }, [url, amount, countryCode, proxyId, proxyType, currency]);
 
-  const onUrlChange = (event) => {
+  const onUrlChange = (event: { preventDefault: () => void; target: { value: React.SetStateAction<string>; }; }) => {
     event.preventDefault();
     setUrl(event.target.value);
   };
 
-  const onProxyIdChange = (event) => {
+  const onProxyIdChange = (event: { preventDefault: () => void; target: { value: React.SetStateAction<string>; }; }) => {
     event.preventDefault();
     setProxyId(event.target.value);
   };
 
-  const onProxyIdTypeChange= (event) => {
+  const onProxyIdTypeChange= (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setProxyType(event.target.value);
   };
 
-  const onAmountChange= (event) => {
-    event.preventDefault();
-    setAmount(event.target.value);
+  const onAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAmount(Number(event.target.value));
   };
 
-  const onCountryCodeChange= (event) => {
+  const onCountryCodeChange= (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setCountryCode(event.target.value);
   };
 
-  const onBankCodeChange= (event) => {
+  const onBankCodeChange= (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setBankCode(event.target.value);
   };
 
 
-  const onCurrencyChange = (event) => {
+  const onCurrencyChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setCurrency(event.target.value);
   };
 
 
-  const onExtensionChange = (event) => {
+  const onExtensionChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setFileExt(event.target.value);
   };
 
   const onDownloadClick = () => {
-    qrCode.download({
-      extension: fileExt
-    });
+    if (qrCodeRef.current) {
+      qrCodeRef.current.download({
+        extension: fileExt
+      });
+    }
   };
   
   return (
@@ -276,11 +258,6 @@ const IndexPage = () => {
               >
                 {link.text}
               </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
               <p style={descriptionStyle}>{link.description}</p>
             </span>
           </li>
