@@ -1,9 +1,9 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
-  flags: {
-    DEV_SSR: true,
-  },
+  // flags: {
+  //   DEV_SSR: true,
+  // },
   siteMetadata: {
     title: `docs2`,
     siteUrl: `https://www.yourdomain.tld`
