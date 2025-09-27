@@ -76,6 +76,9 @@ const links = [
 ]
 
 const IndexPage = () => {
+  if (typeof window === "undefined") {
+    return  <main style={pageStyles}>Loading...</main>;
+  }
   const [url, setUrl] = useState("https://wynsto.github.io/fps-hk/");
   const [fileExt, setFileExt] = useState("png");
   const [currency, setCurrency] = useState("344");

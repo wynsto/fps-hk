@@ -18,6 +18,7 @@
   "dependencies": {
     "@mdx-js/react": "^3.1.1",
     "@tailwindcss/postcss": "^4.1.13",
+    "ajv": "^8.17.1",
     "autoprefixer": "^10.4.21",
     "fps-hk": "^1.0.9",
     "gatsby": "^5.15.0",
