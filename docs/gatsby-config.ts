@@ -6,7 +6,7 @@ const config: GatsbyConfig = {
   },
   siteMetadata: {
     title: `docs`,
-    siteUrl: `https://wynsto.github.io/fps-hk`
+    siteUrl: `https://wynsto.github.io/fps-hk/`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
