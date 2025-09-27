@@ -6,6 +6,10 @@ A Nodejs module that help to generate QR code content string of the Hong Kong Fa
 
 added support for mobile number and email address.
 
+[FPS QR code generate page](https://wynsto.github.io/fps-hk/)
+
+Hong Kong
+
 ## Installation
 
 Install with npm
