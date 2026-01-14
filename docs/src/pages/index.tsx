@@ -133,7 +133,7 @@ const IndexPage = () => {
         data: string
       });
     }
-  }, [url, amount, countryCode, bankCode, proxyId, proxyType, currency]);
+  }, [url, amount, countryCode, bankCode, billRefNo, proxyId, proxyType, currency]);
 
   const onUrlChange = (event: { preventDefault: () => void; target: { value: React.SetStateAction<string>; }; }) => {
     event.preventDefault();
