@@ -113,6 +113,9 @@ const IndexPage = () => {
     // // fps.setTerminalLabel("0006");
     // // fps.setPurposeOfTransaction("0007");
     // // fps.setMobileNumber("12345678");
+    if (bankCode) {
+      fps.setBankCode(bankCode);
+    }
     if (amount) {
       fps.setTransactionAmount(amount);
     }
@@ -125,7 +128,7 @@ const IndexPage = () => {
         data: string
       });
     }
-  }, [url, amount, countryCode, proxyId, proxyType, currency]);
+  }, [url, amount, countryCode, bankCode, proxyId, proxyType, currency]);
 
   const onUrlChange = (event: { preventDefault: () => void; target: { value: React.SetStateAction<string>; }; }) => {
     event.preventDefault();
