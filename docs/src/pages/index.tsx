@@ -69,6 +69,7 @@ const IndexPage = () => {
   const [proxyId, setProxyId] = useState('');
   const [bankCode, setBankCode] = useState('');
   const [proxyType, setProxyType] = useState('Number');
+  const [billRefNo, setBillRefNo] = useState('');
 
   const ref = useRef<HTMLDivElement>(null);
   const qrCodeRef = useRef<any>(null);
@@ -119,6 +120,10 @@ const IndexPage = () => {
     if (amount) {
       fps.setTransactionAmount(amount);
     }
+    if (billRefNo) {
+      fps.setBillNumber(billRefNo)
+    }
+    
     // fps.setTransactionCurrency(currency);
     // fps.setReferenceLabel("ABCD");
     const string = fps.generate();
@@ -154,6 +159,10 @@ const IndexPage = () => {
 
   const onBankCodeChange= (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setBankCode(event.target.value);
+  };
+
+  const onBillRefNoChange= (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    setBillRefNo(event.target.value);
   };
 
 
@@ -217,7 +226,7 @@ const IndexPage = () => {
           <input placeholder="銀行編號 Bank Code" value={bankCode} onChange={onBankCodeChange} />
         </div>
       }
-
+      <input className="inline-block" placeholder={"Please input bill ref No"} value={billRefNo} onChange={onBillRefNoChange} />
       <select onChange={onExtensionChange} value={fileExt}>
         <option value="png">PNG</option>
         <option value="jpeg">JPEG</option>
