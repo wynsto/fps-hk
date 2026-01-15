@@ -78,7 +78,10 @@ Please find the specification of the QR Code used in FPS at:
 The QR Code content string used in FPS contains the **CRC16 CCITT** check sum.
 Please find more details at: [http://www.sunshine2k.de/articles/coding/crc/understanding_crc.html](http://www.sunshine2k.de/articles/coding/crc/understanding_crc.html)
 
+
 [Hong Kong Common_QR_Code_Specification](https://www.hkma.gov.hk/media/eng/doc/key-functions/financial-infrastructure/infrastructure/retail-payment-initiatives/Common_QR_Code_Specification.pdf)
+
+
 [Implementation_Guideline_on_Common_QR_Code](https://www.hkma.gov.hk/media/eng/doc/key-functions/financial-infrastructure/infrastructure/retail-payment-initiatives/Implementation_Guideline_on_Common_QR_Code.pdf)
 
 Table 4.5: Additional Data
