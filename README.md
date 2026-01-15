@@ -85,20 +85,6 @@ Please find more details at: [http://www.sunshine2k.de/articles/coding/crc/under
 [Implementation_Guideline_on_Common_QR_Code](https://www.hkma.gov.hk/media/eng/doc/key-functions/financial-infrastructure/infrastructure/retail-payment-initiatives/Implementation_Guideline_on_Common_QR_Code.pdf)
 
 
-ID Name Length Presence Remarks
-“00” Payload Format
-Indicator
-“02” M A fixed value of “01”
-“01” Point of Initiation
-Method
-“02” O “11” for static QR Codes;
-“12” for dynamic QR Codes
-“63” Cyclic Redundancy
-Check (CRC)
-“04” M Checksum calculated over all
-the data objects included in
-the QR code
-
 # Core QR Code Data Objects
 
 | ID  | Name                        | Length | Presence | Remarks                                                                 |
