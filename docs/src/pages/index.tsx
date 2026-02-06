@@ -6,7 +6,7 @@ import QRCodeStyling  from "qr-code-styling";
 
 const pageStyles = {
   color: "#232129",
-  padding: 96,
+  padding: 16,
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
 }
 const paragraphStyles = {
